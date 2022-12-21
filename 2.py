@@ -1,38 +1,31 @@
+score_1 = 0
+score_2 = 0
 
-sum = 0
-sum2 = 0
-values = []
+shape = {'X': 1, 'Y': 2, 'Z': 3}
 
+# Task 1: X: rock, Y: paper, Z: scissors
+points_1 = {
+  'A': {'X': 3, 'Y': 6, 'Z': 0},
+  'B': {'X': 0, 'Y': 3, 'Z': 6},
+  'C': {'X': 6, 'Y': 0, 'Z': 3}
+}
 
-dict = {"X": 1, "Y": 2, "Z": 3}
-task1 = {
-  "X": {"A": 3, "B": 0, "C": 6}, 
-  "Y":{"A": 6, "B": 3, "C": 0}, 
-  "Z":{"A": 0, "B": 6, "C": 3}}
+# Task 2: X: loose, Y: draw, Z: win
+points_2 = {
+  'X': 0,
+  'Y': 3,
+  'Z': 6, 
+  'A': {'X': 'Z', 'Y': 'X', 'Z': 'Y'},
+  'B': {'X': 'X', 'Y': 'Y', 'Z': 'Z'},
+  'C': {'X': 'Y', 'Y': 'Z', 'Z': 'X'},
+}
 
-
-task2 = {
-  "X": {"A": 3, "B": 1, "C":2}, 
-  "Y":{"A": 4, "B":5, "C": 6 }, 
-  "Z":{"A":8, "B": 9, "C": 7}}
-
-
-with open("data/2-data.txt") as file:
-    data = file.read()
-    for line in data.split('\n'):
-      values.append(line.split())
-
-    for i in values:
-      sum += dict[i[1]]
-      sum += task1[i[1]][i[0]]
-
-    for i in values:
-      sum2 +=  task2[i[1]][i[0]]
-
-       
-    print(sum)
-    print(sum2)
-
-
+with open('data/2.txt') as file:
+  for line in file:
+    score_1 += shape[line[2]] + points_1[line[0]][line[2]]
+    score_2 += points_2[line[2]] + shape[points_2[line[0]][line[2]]]
+ 
+print('Task 1:', score_1)
+print('Task 2', score_2)
 
 
