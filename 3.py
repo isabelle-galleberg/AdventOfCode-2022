@@ -1,32 +1,31 @@
-sum1 = 0
-sum2 = 0
-rucksacks = []
-chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+sum_1 = 0
+sum_2 = 0
+data = []
+priorities = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-with open("data/3-data.txt") as file:
-  data = file.read()
-  for line in data.split('\n'):
-    rucksacks.append(line)
+with open('data/3.txt') as file:
+  for line in file:
+    data.append(line)
 
-  # task 1
-  for sack in rucksacks:
-    first_half = sack[:len(sack)//2]
-    second_half = sack[len(sack)//2:]
-    for item in first_half:
-      if item in second_half:
-        sum2 += chars.index(item) + 1
+  # task 1: find sum of priorities for the common element in both halves of each rucksack
+  for rucksack in data:
+    half = len(rucksack) // 2
+    for item in rucksack[:half]:
+      if item in rucksack[half:]:
+        sum_1 += priorities.index(item) + 1
         break
 
-  print(sum2)
-
-  # task 2
-  for i in range(0, len(rucksacks), 3):
-    group = rucksacks[i:i+3]
+  # task 2: find sum of priorities for the common element in groups of there rucksacks 
+  for i in range(0, len(data), 3):
+    group = data[i:i+3]
     for item in group[0]:
       if item in group[1] and item in group[2]:
-        sum1 += chars.index(item) + 1
+        sum_2 += priorities.index(item) + 1
         break
-  print(sum1)
+
+
+  print('Task 1:', sum_1)
+  print('Task 2:', sum_2)
 
 
 
