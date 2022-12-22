@@ -12,7 +12,7 @@ def findStartMarker(data, num):
       chars = chars[duplicateIdx:]
       chars.append(elem)
 
-with open("data/6.txt") as file:
+with open('data/6.txt') as file:
   data = file.read()
   print(findStartMarker(data, 4))
   print(findStartMarker(data, 14))
