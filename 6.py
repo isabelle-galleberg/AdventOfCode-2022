@@ -14,8 +14,8 @@ def findStartMarker(data, num):
 
 with open('data/6.txt') as file:
   data = file.read()
-  print(findStartMarker(data, 4))
-  print(findStartMarker(data, 14))
+  print('Task 1:',findStartMarker(data, 4))
+  print('Task 2:',findStartMarker(data, 14))
 
 
 
